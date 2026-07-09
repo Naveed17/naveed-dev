@@ -2,18 +2,24 @@ import type { Metadata } from "next";
 import "@styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "Naveed Ahmed | Software Developer",
+  title: "Naveed Ahmed | Full-Stack Developer",
   description:
-    "Naveed Ahmed - Software Developer building interactive and seamless digital experiences with cutting-edge frontend development.",
-  metadataBase: new URL("https://oscarhernandez.vercel.app"),
+    "Naveed Ahmed - Full-Stack Developer building end-to-end web applications with the MERN stack.",
+  metadataBase: new URL("https://naveed-dev-weld.vercel.app"),
   openGraph: {
-    title: "Naveed Ahmed | Software Developer",
+    title: "Naveed Ahmed | Full-Stack Developer",
     description:
-      "Portfolio of Naveed Ahmed, Software Developer specializing in frontend and interactive experiences.",
-    url: "https://oscarhernandez.vercel.app",
+      "Full-Stack Developer specializing in MERN stack — React, Node.js, MongoDB & Express.",
+    url: "https://naveed-dev-weld.vercel.app",
     siteName: "Naveed Ahmed Portfolio",
-    images: [{ url: "/og.image.png" }],
+    images: [{ url: "/og.image.png", width: 1200, height: 630, alt: "Naveed Ahmed Portfolio" }],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Naveed Ahmed | Full-Stack Developer",
+    description: "Full-Stack Developer specializing in MERN stack.",
+    images: ["/og.image.png"],
   },
 };
 
@@ -45,9 +51,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 "https://github.com/Naveed17",
                 "https://www.linkedin.com/in/naveedahmed-webdev-js/",
               ],
-              jobTitle: "Software Developer",
+              jobTitle: "Full-Stack Developer",
               description:
-                "Software Developer building interactive and seamless digital experiences.",
+                "Full-Stack Developer building end-to-end web applications with the MERN stack — React, Node.js, MongoDB & Express.",
             }),
           }}
         />
