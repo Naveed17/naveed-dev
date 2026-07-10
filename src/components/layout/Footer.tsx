@@ -57,9 +57,9 @@ export default function Footer() {
           <div className="flex flex-col items-center lg:items-start space-y-6">
             <div className="w-full max-w-xs">
               <iframe
-                style={{ borderRadius: "12px", border: 0 }}
+                style={{ borderRadius: "12px", border: 0, overflow: "hidden" }}
                 src="https://open.spotify.com/embed/playlist/2irOd49FRRLFWYccolQeea?utm_source=generator&theme=0&locale=en_US"
-                className="w-full h-40"
+                className="w-full h-40 overflow-hidden"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy"
               />
