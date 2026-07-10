@@ -21,6 +21,8 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
           width={600}
           height={400}
           onLoad={() => setLoaded(true)}
+          placeholder="empty"
+          unoptimized
           className={`w-full h-48 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300 ${loaded ? "opacity-100" : "opacity-0 absolute inset-0"}`}
         />
       </a>
