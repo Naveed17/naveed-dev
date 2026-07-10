@@ -5,7 +5,7 @@ import { db } from "@lib/firebase";
 
 export default function LikeButton() {
   const [likes, setLikes] = useState(0);
-  const [isLiked, setIsLiked] = useState(() => 
+  const [isLiked, setIsLiked] = useState(() =>
     typeof window !== "undefined" && localStorage.getItem("websiteIsLiked") === "true"
   );
   const [isAnimating, setIsAnimating] = useState(false);
