@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 
 const projects = [
   { title: "Soghats.pk", image: "/soghats.png", link: "https://github.com/Naveed17/soghat-nextjs-pro", preview: "https://soghats.pk/", status: "Deployed" },
@@ -6,6 +8,45 @@ const projects = [
   { title: "Baires", image: "/svgl.png", link: "https://github.com/Naveed17/bairesDev", preview: "https://baires-dev-nu.vercel.app/", status: "Deployed" },
   { title: "Next Shop", image: "/ns.png", link: "https://github.com/Naveed17/next_shopping_cart_pro", preview: "https://next-shopping-cart-pro.vercel.app/", status: "Deployed" },
 ];
+
+function ProjectCard({ project }: { project: typeof projects[0] }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="group">
+      <a href={project.preview} target="_blank" rel="noopener noreferrer" className="block rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-4 relative">
+        {!loaded && <div className="w-full h-48 md:h-72 bg-surface animate-pulse rounded-2xl" />}
+        <Image
+          src={project.image}
+          alt={project.title}
+          width={600}
+          height={400}
+          onLoad={() => setLoaded(true)}
+          className={`w-full h-48 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300 ${loaded ? "opacity-100" : "opacity-0 absolute inset-0"}`}
+        />
+      </a>
+      <div className="flex items-center px-3">
+        <div className="grow">
+          <h4 className="text-2xl font-semibold">{project.title}</h4>
+          <span className="py-1 text-sm text-(--white-icon)">{project.status}</span>
+        </div>
+        <div className="flex gap-2 ml-auto">
+          <a target="_blank" href={project.link} aria-label="GitHub"
+            className="size-14 flex justify-center items-center text-(--white-icon) hover:text-(--white) transition duration-300 ease-in-out border border-(--white-icon-tr) p-3 rounded-xl bg-surface hover:bg-surface-hover">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-7">
+              <path d="M24 12L18.3431 17.6569L16.9289 16.2426L21.1716 12L16.9289 7.75736L18.3431 6.34315L24 12ZM2.82843 12L7.07107 16.2426L5.65685 17.6569L0 12L5.65685 6.34315L7.07107 7.75736L2.82843 12ZM9.78845 21H7.66009L14.2116 3H16.3399L9.78845 21Z" />
+            </svg>
+          </a>
+          <a target="_blank" href={project.preview} aria-label="Preview"
+            className="size-14 flex justify-center items-center text-(--white-icon) hover:text-(--white) transition duration-300 ease-in-out border border-(--white-icon-tr) p-3 rounded-xl bg-surface hover:bg-surface-hover">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-7">
+              <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Projects() {
   return (
@@ -15,32 +56,7 @@ export default function Projects() {
         <h3 className="text-4xl md:text-5xl font-medium mb-8">Projects</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project) => (
-            <div key={project.title} className="group">
-              <a href={project.preview} target="_blank" rel="noopener noreferrer" className="block rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-4">
-                <Image src={project.image} alt={project.title} width={600} height={400}
-                  className="w-full h-48 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300" />
-              </a>
-              <div className="flex items-center px-3">
-                <div className="grow">
-                  <h4 className="text-2xl font-semibold">{project.title}</h4>
-                  <span className="py-1 text-sm text-(--white-icon)">{project.status}</span>
-                </div>
-                <div className="flex gap-2 ml-auto">
-                  <a target="_blank" href={project.link} aria-label="GitHub"
-                    className="size-14 flex justify-center items-center text-(--white-icon) hover:text-(--white) transition duration-300 ease-in-out border border-(--white-icon-tr) p-3 rounded-xl bg-surface hover:bg-surface-hover">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-7">
-                      <path d="M24 12L18.3431 17.6569L16.9289 16.2426L21.1716 12L16.9289 7.75736L18.3431 6.34315L24 12ZM2.82843 12L7.07107 16.2426L5.65685 17.6569L0 12L5.65685 6.34315L7.07107 7.75736L2.82843 12ZM9.78845 21H7.66009L14.2116 3H16.3399L9.78845 21Z" />
-                    </svg>
-                  </a>
-                  <a target="_blank" href={project.preview} aria-label="Preview"
-                    className="size-14 flex justify-center items-center text-(--white-icon) hover:text-(--white) transition duration-300 ease-in-out border border-(--white-icon-tr) p-3 rounded-xl bg-surface hover:bg-surface-hover">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-7">
-                      <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
+            <ProjectCard key={project.title} project={project} />
           ))}
         </div>
         <a target="_blank" href="https://github.com/Naveed17?tab=repositories" aria-label="GitHub"
