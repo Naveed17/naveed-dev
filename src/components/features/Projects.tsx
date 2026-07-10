@@ -13,18 +13,20 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   const [loaded, setLoaded] = useState(false);
   return (
     <div className="group">
-      <a href={project.preview} target="_blank" rel="noopener noreferrer" className="block rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-4 relative">
-        {!loaded && <div className="w-full h-48 md:h-72 bg-surface animate-pulse rounded-2xl" />}
-        <Image
-          src={project.image}
-          alt={project.title}
-          width={600}
-          height={400}
-          onLoad={() => setLoaded(true)}
-          placeholder="empty"
-          unoptimized
-          className={`w-full h-48 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300 ${loaded ? "opacity-100" : "opacity-0 absolute inset-0"}`}
-        />
+      <a href={project.preview} target="_blank" rel="noopener noreferrer" className="block rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 mb-4 border-2 border-(--sec) p-1">
+        <div className="relative rounded-xl overflow-hidden h-48 md:h-72">
+          {!loaded && <div className="absolute inset-0 bg-surface animate-pulse" />}
+          <Image
+            src={project.image}
+            alt={project.title}
+            width={600}
+            height={400}
+            onLoad={() => setLoaded(true)}
+            placeholder="empty"
+            unoptimized
+            className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 ${loaded ? "opacity-100" : "opacity-0"}`}
+          />
+        </div>
       </a>
       <div className="flex items-center px-3">
         <div className="grow">
