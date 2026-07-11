@@ -18,6 +18,7 @@ const displayNames: Record<string, string> = {
   git: "Git",
   supabase: "Supabase",
   mysql: "MySQL",
+  bash: "Bash",
 };
 
 export default function LogoWall() {
