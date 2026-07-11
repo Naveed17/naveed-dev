@@ -1,0 +1,61 @@
+﻿---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const siteName = "Naveed Ahmed Portfolio";
+const description =
+  "Naveed Ahmed - Full-Stack Developer building end-to-end web applications with the MERN stack.";
+const ogImage = "/og.image.png";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="icon" type="image" href="/favicon.ico" />
+    <link
+      rel="preload"
+      href="/fonts/montserrat-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Naveed Ahmed",
+        alternateName: "Naveed",
+        image: ogImage,
+        sameAs: [
+          "https://github.com/Naveed17",
+          "https://www.linkedin.com/in/naveedahmed-webdev-js/",
+        ],
+        jobTitle: "Full-Stack Developer",
+        description,
+      })}
+    />
+  </head>
+  <body
+    class="bg-[var(--background)] text-[var(--white)] sm:px-28 lg:px-20 px-9 transition-colors duration-300"
+  >
+    <slot />
+  </body>
+</html>
