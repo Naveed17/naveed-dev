@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 
@@ -7,7 +6,7 @@ export default function Contact() {
   const [showAlert, setShowAlert] = useState(true);
 
   return (
-    <section id="contact" className="w-full py-12 border-t border-border">
+    <section id="contact" className="w-full py-12 border-t border-gray-50/10">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-lg text-(--sec) mb-2 shiny-sec">Let&apos;s talk</h2>
         <h3 className="text-4xl md:text-5xl font-medium text-(--white) mb-6">Contact</h3>
