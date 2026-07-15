@@ -33,7 +33,7 @@ const currentYear = new Date().getFullYear();
                 class="flex flex-col items-center group"
                 aria-label={link.label}
               >
-                <div class="text-[var(--white-icon)] hover:text-[var(--white)] transition duration-300 ease-in-out">
+                <div class="text-(--white-icon) hover:text-(--white) transition duration-300 ease-in-out">
                   <div set:html={link.icon} />
                 </div>
               </a>
@@ -43,49 +43,35 @@ const currentYear = new Date().getFullYear();
         <LikeButton client:load />
       </div>
 
-      <!-- <div class="flex flex-col items-center space-y-6">
-        <div class="grid grid-cols-1 gap-3 w-full max-w-xs py-6">
-          {
-            [
-              {
-                desc: "Built with",
-                name: "Astro",
-                icon: "/svg/astro.svg",
-                alt: "Astro logo",
-              },
-              {
-                desc: "Styled with",
-                name: "TailwindCSS",
-                icon: "/svg/tailwindcss.svg",
-                alt: "TailwindCSS Logo",
-              },
-              {
-                desc: "Deployed on",
-                name: "Vercel",
-                icon: "/svg/vercel.svg",
-                alt: "Vercel Logo",
-              },
-            ].map((tech) => (
-              <div class="flex items-center justify-center lg:justify-normal space-x-3">
-                <span class="text-[var(--white-icon)] text-sm">
-                  {tech.desc}
-                </span>
-                <img
-                  src={tech.icon}
-                  alt={tech.alt}
-                  class="h-5 w-5 object-contain filter brightness-0 invert opacity-50"
-                  loading="lazy"
-                />
-                <span class="text-[var(--white-icon)] text-sm">
-                  {tech.name}
-                </span>
-              </div>
-            ))
-          }
-        </div>
-      </div> -->
+      <div class="flex items-center justify-center gap-3 py-6">
+        <span class="text-sm text-gray-400">Made with</span>
 
-      <div class="flex flex-col items-center lg:items-end space-y-6">
+        {
+          [
+            {
+              icon: "/svg/astro.svg",
+              alt: "Astro Logo",
+            },
+            {
+              icon: "/svg/tailwindcss.svg",
+              alt: "TailwindCSS Logo",
+            },
+            {
+              icon: "/svg/vercel.svg",
+              alt: "Vercel Logo",
+            },
+          ].map((tech) => (
+            <img
+              src={tech.icon}
+              alt={tech.alt}
+              class="h-5 w-5 object-contain filter brightness-0 invert opacity-50"
+              loading="lazy"
+            />
+          ))
+        }
+      </div>
+
+      <div class="flex flex-col items-center lg:items-start space-y-6">
         <div class="w-full max-w-xs">
           <iframe
             style="border-radius:12px; border:0;"
@@ -99,7 +85,7 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <div class="mt-12 pt-8 border-t border-[#ffffff10]">
-      <p class="text-center text-sm text-[var(--white-icon)] space-y-2">
+      <p class="text-center text-sm text-(--white-icon) space-y-2">
         <span class="block sm:inline"
           >Copyright (c) {currentYear}{" "}
           <a href="https://github.com/Naveed17">Naveed Ahmed</a>. All rights
