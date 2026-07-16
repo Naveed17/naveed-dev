@@ -1,6 +1,6 @@
-import { A as FontFamilyNotFound, D as ExpectedImage, I as ImageMissingAlt, O as ExpectedImageOptions, R as InvalidComponentArgs, V as InvalidImageService, _t as AstroError$1, at as RemoteImageNotAllowed, c as isRemotePath, g as inferRemoteSize$1, k as ExpectedNotESMImage, y as isRemoteAllowed } from "./path_BpM4dK6e.mjs";
-import { a as DEFAULT_HASH_PROPS, c as resolveSrc, i as resolveDefaultOutputFormat, n as isLocalService, o as isESMImportedImage, s as isRemoteImage } from "./service_HN6HHXjv.mjs";
-import { S as createAstro, b as unescapeHTML, g as addAttribute, m as maybeRenderHead, t as spreadAttributes, u as renderTemplate } from "./server_CW89OMP0.mjs";
+import { A as FontFamilyNotFound, D as ExpectedImage, I as ImageMissingAlt, O as ExpectedImageOptions, R as InvalidComponentArgs, V as InvalidImageService, c as isRemotePath, g as inferRemoteSize$1, k as ExpectedNotESMImage, ot as RemoteImageNotAllowed, q as MissingGetFontFileRequestUrl, vt as AstroError, y as isRemoteAllowed } from "./path_JcdHq8sq.mjs";
+import { a as DEFAULT_HASH_PROPS, c as resolveSrc, i as resolveDefaultOutputFormat, n as isLocalService, o as isESMImportedImage, s as isRemoteImage } from "./service_yb3FV_BB.mjs";
+import { S as createAstro, b as unescapeHTML, g as addAttribute, m as maybeRenderHead, t as spreadAttributes, u as renderTemplate } from "./server_C8DU_Ah9.mjs";
 import * as mime from "mrmime";
 //#region node_modules/astro/dist/runtime/server/astro-component.js
 function validateArgs(args) {
@@ -11,7 +11,7 @@ function validateArgs(args) {
 function baseCreateComponent(cb, moduleId, propagation) {
 	const name = moduleId?.split("/").pop()?.replace(".astro", "") ?? "";
 	const fn = (...args) => {
-		if (!validateArgs(args)) throw new AstroError$1({
+		if (!validateArgs(args)) throw new AstroError({
 			...InvalidComponentArgs,
 			message: InvalidComponentArgs.message(name)
 		});
@@ -109,8 +109,8 @@ var cssFitValues = [
 ];
 async function getConfiguredImageService() {
 	if (!globalThis?.astroAsset?.imageService) {
-		const { default: service } = await import("./sharp_7PEJFDay.mjs").catch((e) => {
-			const error = new AstroError$1(InvalidImageService);
+		const { default: service } = await import("./sharp_CDoBJrzf.mjs").catch((e) => {
+			const error = new AstroError(InvalidImageService);
 			error.cause = e;
 			throw error;
 		});
@@ -121,15 +121,15 @@ async function getConfiguredImageService() {
 	return globalThis.astroAsset.imageService;
 }
 async function getImage$1(options, imageConfig) {
-	if (!options || typeof options !== "object") throw new AstroError$1({
+	if (!options || typeof options !== "object") throw new AstroError({
 		...ExpectedImageOptions,
 		message: ExpectedImageOptions.message(JSON.stringify(options))
 	});
-	if (typeof options.src === "undefined") throw new AstroError$1({
+	if (typeof options.src === "undefined") throw new AstroError({
 		...ExpectedImage,
 		message: ExpectedImage.message(options.src, "undefined", JSON.stringify(options))
 	});
-	if (isImageMetadata(options)) throw new AstroError$1(ExpectedNotESMImage);
+	if (isImageMetadata(options)) throw new AstroError(ExpectedNotESMImage);
 	const service = await getConfiguredImageService();
 	const resolvedOptions = {
 		...options,
@@ -140,7 +140,7 @@ async function getImage$1(options, imageConfig) {
 	if (resolvedOptions.inferSize) {
 		delete resolvedOptions.inferSize;
 		if (isRemoteImage(resolvedOptions.src) && isRemotePath(resolvedOptions.src)) {
-			if (!isRemoteAllowed(resolvedOptions.src, imageConfig)) throw new AstroError$1({
+			if (!isRemoteAllowed(resolvedOptions.src, imageConfig)) throw new AstroError({
 				...RemoteImageNotAllowed,
 				message: RemoteImageNotAllowed.message(resolvedOptions.src)
 			});
@@ -271,7 +271,7 @@ var $$Image = createComponent(async ($$result, $$props, $$slots) => {
 	const Astro2 = $$result.createAstro($$props, $$slots);
 	Astro2.self = $$Image;
 	const props = Astro2.props;
-	if (props.alt === void 0 || props.alt === null) throw new AstroError$1(ImageMissingAlt);
+	if (props.alt === void 0 || props.alt === null) throw new AstroError(ImageMissingAlt);
 	if (typeof props.width === "string") props.width = Number.parseInt(props.width);
 	if (typeof props.height === "string") props.height = Number.parseInt(props.height);
 	if ((props.layout ?? imageConfig.layout ?? "none") !== "none") {
@@ -306,7 +306,7 @@ var $$Picture = createComponent(async ($$result, $$props, $$slots) => {
 		"jpeg"
 	];
 	const { formats = defaultFormats, pictureAttributes = {}, fallbackFormat, ...props } = Astro2.props;
-	if (props.alt === void 0 || props.alt === null) throw new AstroError$1(ImageMissingAlt);
+	if (props.alt === void 0 || props.alt === null) throw new AstroError(ImageMissingAlt);
 	const scopedStyleClass = props.class?.match(/\bastro-\w{8}\b/)?.[0];
 	if (scopedStyleClass) if (pictureAttributes.class) pictureAttributes.class = `${pictureAttributes.class} ${scopedStyleClass}`;
 	else pictureAttributes.class = scopedStyleClass;
@@ -388,86 +388,13 @@ var $$Font = createComponent(($$result, $$props, $$slots) => {
 	Astro.self = $$Font;
 	const { cssVariable, preload = false } = Astro.props;
 	const data = componentDataByCssVariable.get(cssVariable);
-	if (!data) throw new AstroError$1({
+	if (!data) throw new AstroError({
 		...FontFamilyNotFound,
 		message: FontFamilyNotFound.message(cssVariable)
 	});
 	const filteredPreloadData = filterPreloads(data.preloads, preload);
 	return renderTemplate`<style>${unescapeHTML(data.css)}</style>${filteredPreloadData?.map(({ url, type }) => renderTemplate`<link rel="preload"${addAttribute(url, "href")} as="font"${addAttribute(`font/${type}`, "type")} crossorigin>`)}`;
 }, "D:/portfolio-next/node_modules/astro/components/Font.astro", void 0);
-//#endregion
-//#region node_modules/astro/dist/core/errors/errors-data.js
-var MissingGetFontFileRequestUrl = {
-	name: "MissingGetFontFileRequestUrl",
-	title: "`experimental_getFontFileURL()` requires the request URL with on-demand rendering.",
-	hint: "Pass the request URL as the 2nd argument, for example `Astro.url`."
-};
-//#endregion
-//#region node_modules/astro/dist/core/errors/utils.js
-function normalizeLF(code) {
-	return code.replace(/\r\n|\r(?!\n)|\n/g, "\n");
-}
-//#endregion
-//#region node_modules/astro/dist/core/errors/printer.js
-function codeFrame(src, loc) {
-	if (!loc || loc.line === void 0 || loc.column === void 0) return "";
-	const lines = normalizeLF(src).split("\n").map((ln) => ln.replace(/\t/g, "  "));
-	const visibleLines = [];
-	for (let n = -2; n <= 2; n++) if (lines[loc.line + n]) visibleLines.push(loc.line + n);
-	let gutterWidth = 0;
-	for (const lineNo of visibleLines) {
-		let w = `> ${lineNo}`;
-		if (w.length > gutterWidth) gutterWidth = w.length;
-	}
-	let output = "";
-	for (const lineNo of visibleLines) {
-		const isFocusedLine = lineNo === loc.line - 1;
-		output += isFocusedLine ? "> " : "  ";
-		output += `${lineNo + 1} | ${lines[lineNo]}
-`;
-		if (isFocusedLine) output += `${Array.from({ length: gutterWidth }).join(" ")}  | ${Array.from({ length: loc.column }).join(" ")}^
-`;
-	}
-	return output;
-}
-//#endregion
-//#region node_modules/astro/dist/core/errors/errors.js
-var AstroError = class extends Error {
-	loc;
-	title;
-	hint;
-	frame;
-	type = "AstroError";
-	constructor(props, options) {
-		const { name, title, message, stack, location, hint, frame } = props;
-		super(message, options);
-		this.title = title;
-		this.name = name;
-		if (message) this.message = message;
-		this.stack = stack ? stack : this.stack;
-		this.loc = location;
-		this.hint = hint;
-		this.frame = frame;
-	}
-	setLocation(location) {
-		this.loc = location;
-	}
-	setName(name) {
-		this.name = name;
-	}
-	setMessage(message) {
-		this.message = message;
-	}
-	setHint(hint) {
-		this.hint = hint;
-	}
-	setFrame(source, location) {
-		this.frame = codeFrame(source, location);
-	}
-	static is(err) {
-		return err?.type === "AstroError";
-	}
-};
 //#endregion
 //#region node_modules/astro/dist/assets/fonts/infra/ssr-runtime-font-file-url-resolver.js
 var SsrRuntimeFontFileUrlResolver = class {

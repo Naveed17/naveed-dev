@@ -1,4 +1,4 @@
-import { $ as NoMatchingRenderer, E as EndpointDidNotReturnAResponse, J as MissingMediaQueryDirective, Q as NoMatchingImport, X as NoClientOnlyHint, _t as AstroError, pt as UnavailableAstroGlobal, st as ResponseSentError, tt as OnlyResponseCanBeReturned } from "./path_BpM4dK6e.mjs";
+import { $ as NoMatchingImport, E as EndpointDidNotReturnAResponse, Y as MissingMediaQueryDirective, Z as NoClientOnlyHint, ct as ResponseSentError, et as NoMatchingRenderer, mt as UnavailableAstroGlobal, nt as OnlyResponseCanBeReturned, vt as AstroError } from "./path_JcdHq8sq.mjs";
 import colors from "piccolore";
 import { escape } from "html-escaper";
 import { clsx } from "clsx";
