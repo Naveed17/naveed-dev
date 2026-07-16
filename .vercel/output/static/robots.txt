@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://naveed-dev-weld.vercel.app/sitemap.xml

@@ -8,8 +8,9 @@ interface Props {
 const { title } = Astro.props;
 const siteName = "Naveed Ahmed Portfolio";
 const description =
-  "Naveed Ahmed - Full-Stack Developer building end-to-end web applications with the MERN stack.";
+  "Naveed Ahmed - Full-Stack Developer from Pakistan specializing in MERN Stack, React, Next.js, and Node.js. Available for hire to build scalable web applications.";
 const ogImage = "/og.image.png";
+const siteUrl = "https://naveed-dev-weld.vercel.app";
 ---
 
 <!doctype html>
@@ -19,10 +20,15 @@ const ogImage = "/og.image.png";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content="Full-Stack Developer Pakistan, MERN Stack Developer, React Developer Pakistan, Node.js Developer, Next.js Developer, hire web developer Pakistan, JavaScript developer, MongoDB Express React Node" />
+    <meta name="author" content="Naveed Ahmed" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={siteUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
     <meta property="og:site_name" content={siteName} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -44,13 +50,19 @@ const ogImage = "/og.image.png";
         "@type": "Person",
         name: "Naveed Ahmed",
         alternateName: "Naveed",
-        image: ogImage,
+        url: siteUrl,
+        image: `${siteUrl}${ogImage}`,
         sameAs: [
           "https://github.com/Naveed17",
           "https://www.linkedin.com/in/naveedahmed-webdev-js/",
         ],
         jobTitle: "Full-Stack Developer",
         description,
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "PK",
+        },
+        knowsAbout: ["React", "Node.js", "Next.js", "MongoDB", "Express", "TypeScript", "MERN Stack", "Full-Stack Development"],
       })}
     />
   </head>
